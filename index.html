@@ -17,15 +17,8 @@
         <section id="titles">
             <h2>Select a movie</h2>
             <select>
+                <option></option>
             </select>
-        </section>
-        <section>
-            <h2>Add a review</h2>
-            <form id="addReview">
-                <label for="review"></label>
-                <input id="review" value="Review" type="text">
-                <input type="submit">
-            </form>
         </section>
         <section>
             <h2>Movie details</h2>
@@ -33,16 +26,24 @@
             </div>
         </section>
         <section>
-            <h2>People</h2>
-            <ol hidden>
-            </ol>
-            <button id="show-people">Show People</button>
+            <h2>Add a review</h2>
+            <form id="addReview">
+                <label for="review">Your Review</label>
+                <input id="review" name="review" placeholder="Review" type="text">
+                <input type="submit">
+            </form>
         </section>
         <section id="reviews">
             <h2>Reviews</h2>
-            <ul hidden>
+            <ul id="reviewList">
             </ul>
             <button id="reset-reviews">Reset Reviews</button>
+        </section>
+        <section>
+            <h2>People</h2>
+            <ol id="people">
+            </ol>
+            <button id="show-people">Show People</button>
         </section>
     </main>
 </body>

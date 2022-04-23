@@ -4,8 +4,8 @@ body{
 
 }
 
-@media (max-width: 499px){
-    section#reviews.reviews {
+@media (max-width: 500px){
+    #reviews {
         display: none;
     }
 }

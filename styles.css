@@ -5,5 +5,14 @@ body {
 
 header {
     background-color: skyblue;
+    width:75% ;
+    margin: 0% auto;
+    height: 165px;
+}
+
+img {
     width: 75%;
+    margin: 0% auto;
+    height: 150px;
+
 }

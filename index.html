@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Studio Ghibli</title>
     <link rel="stylesheet" href="styles.css">
     <script defer src="main.js"></script>
 </head>
@@ -13,26 +13,22 @@
         <img src="./images/ghibli-logo.png" 
         alt="Ghibli logo"
         />
-        <h1>
-           Ghibli Review App 
-        </h1>
+        <h1>Ghibli Review App</h1>  
     </header>
         <main>
             <section>
-                <h2>
-                     Select a movie
-                </h2>
-                <select id="" title=""></select>
+                <h2>Select a movie</h2>
+                <select id="titles">
+                    <option value=""></option>
+                </select>
             </section>
             <section>
-                <h2>
-                    Add a review
+                <h2>Add a review</h2>
                     <form>
-                        <label></label>
-                        <input>
-                        <input>
+                        <label for="review">Your review:</label> <br>
+                        <input id="review" name="review" type="text" />
+                        <input type="submit" />
                     </form>
-                </h2>
             </section>
             <section>
                 <h2>
@@ -43,21 +39,20 @@
                 </h2>
             </section>
             <section>
-                <h2>
-                   People
-                </h2>
+                <h2>People</h2>
                 <ol>             
                 </ol>
-                <button id="show-people" text="Show People">
-
+                <button id="show-people" type="text">
+                    Show People
                 </button>
             </section>
             <section id="reviews">
-                <h2>
-                    Reviews 
-                    <ul></ul>
-            <button id="reset-reviews" text="Reset Reviews"></button>
-                </h2>
+                <h2>Reviews</h2>
+                <ul></ul>
+            <button id="reset-reviews" type="text"/> 
+                Reset Reviews 
+             </button>
+                
 
             </section>
         </main>

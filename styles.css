@@ -5,14 +5,26 @@ body {
 
 header {
     background-color: skyblue;
-    width:75% ;
-    margin: 0% auto;
+    width: 95%;
+    margin: 0 auto;
     height: 165px;
+    display: flex;
+    justify-content: space-between;
 }
 
 img {
-    width: 75%;
-    margin: 0% auto;
-    height: 150px;
-
+ height: inherit;
 }
+
+
+#titles {
+    width: 165px;
+}
+
+button {
+    border-radius: 6px;
+    padding: 1px;
+    width: 150px;
+    height: 35px;
+}
+

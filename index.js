@@ -75,10 +75,6 @@ addReview.addEventListener("submit", (e) => {
         reviewList.append(reviewLi);
         e.target.review.value="";
     }
-    
-    
-    //console.log(movieBox[selectedMovie].textContent);
-    //console.log(e.target.review.value);
 });
 
 reviewReset.addEventListener("click", (e) => {

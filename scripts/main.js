@@ -118,10 +118,6 @@ const showPeople = (e) => {
         }
     })
     .catch(err => alert(err));
-
-
-
-
 }
 
 const resetReviews = () => reviewList.innerHTML = '';

@@ -33,8 +33,6 @@ const boxPopuli = ((data) => {
 movieBox.addEventListener("change", (e) => {
     e.preventDefault();
     chooseMovie(e);
-    //listPeople(e);
-    //console.log(e.target.value);
 });
 
 const chooseMovie = (e) => {
@@ -83,5 +81,4 @@ reviewReset.addEventListener("click", (e) => {
     for(let review of allReviews){
         review.remove();
     }
-    console.log(allReviews);
 });

@@ -20,6 +20,8 @@ setTimeout(() => {
         .catch((error) => console.log("WE GOT AN ERRAH HEAH:", error));    
 }, 1000);
 
+//Setting my fetch to wait a dang second is the only way I can get cypress to stop freaking out
+
 const boxPopuli = ((data) => {
     console.log(data);
     for (let movie of data) {

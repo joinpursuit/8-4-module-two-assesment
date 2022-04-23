@@ -23,7 +23,8 @@ const populateList = (res) => {
 }
 
 const changeMovie = (e) => {
-    console.log (e.target.value);
+    movieDetails.innerHTML = ''; //ideally this would be a loop to remove all children
+    
     fetch(`${API}/films/${e.target.value}`)
         .then(res => res.json())
         .then(res => {

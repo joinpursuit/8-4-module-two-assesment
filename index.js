@@ -68,12 +68,15 @@ addReview.addEventListener("submit", (e) => {
     reviewLi.append(strong);
     if (movieBox[selectedMovie].textContent===""){
         alert("Please select a movie first");
+    } else if (e.target.review.value==="") {
+        alert("Please input a review");
     } else {
         reviewLi.append(`: ${e.target.review.value}`);
         reviewList.append(reviewLi);
+        e.target.review.value="";
     }
     
-    e.target.review.value="";
+    
     //console.log(movieBox[selectedMovie].textContent);
     //console.log(e.target.review.value);
 });

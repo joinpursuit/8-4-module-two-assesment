@@ -102,7 +102,7 @@ describe("Select Menu", () => {
   before(() => {
     cy.visit("/");
     interceptFilms();
-    cy.wait("@request");
+    // cy.wait("@request");
   });
 
   it("Has a select box", () => {
@@ -124,7 +124,7 @@ describe("Movie Description", () => {
   before(() => {
     cy.visit("/");
     interceptFilms();
-    cy.wait("@request");
+    // cy.wait("@request");
   });
   it("Select an option to view movie information", () => {
     interceptTotoro();
@@ -239,7 +239,7 @@ describe("Get people for a movie", () => {
   it("Generates an ordered list of people's names", () => {
     interceptPeople();
     cy.get("#show-people").click();
-    cy.wait("@people");
+    // cy.wait("@people");
     ["Kiki", "Jiji", "Osono", "Ursula", "Tombo", "Madame"].forEach((person) =>
       cy.contains(person)
     );

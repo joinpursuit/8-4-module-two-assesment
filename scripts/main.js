@@ -12,25 +12,29 @@ const peopleList = document.getElementById('peopleList');
 
 //event listeners
 movieList.addEventListener('change', (e) => changeMovie(e));
+// movieList.addEventListener('click', (e) => fetcher(e))
 reviewForm.addEventListener('submit', (e) => submitReview(e));
 resetButton.addEventListener('click', () => resetReviews());
 peopleButton.addEventListener('click', (e) => showPeople(e));
 
-//global var for current movie and all the people
+//global var for current movie
 // because this seems easiest...I want useState() plz
 let currentRes;
-let people;
+
+
+// const fetcher = () => {
+//     fetch(`${API}/films`)
+//         .then(res => res.json())
+//         .then(res => populateList(res))
+//         .catch(err => alert(err));
+// }
 
 fetch(`${API}/films`)
-    .then(res => res.json())
-    .then(res => populateList(res))
-    .catch(err => alert(err));
+        .then(res => res.json())
+        .then(res => populateList(res))
+        .catch(err => alert(err));
 
 
-fetch(`${API}/people?limit=250`)
-    .then(res => res.json())
-    .then(res => people = res)
-    .catch(err => alert(err));
 
 
 const populateList = (res) => {
@@ -43,6 +47,8 @@ const populateList = (res) => {
 }
 
 const changeMovie = (e) => {
+    e.preventDefault();
+    console.log ('CHANGE');
     movieDetails.innerHTML = ''; //ideally this would be a loop to remove all children
 
     fetch(`${API}/films/${e.target.value}`)
@@ -88,6 +94,7 @@ const submitReview = (e) => {
 }
 
 const showPeople = (e) => {
+    e.preventDefault();
     let title = document.querySelector('#display-info h3');
     if (!title) {
         alert('Please select a movie first');
@@ -96,21 +103,22 @@ const showPeople = (e) => {
     title = title.textContent;
     peopleList.innerHTML = '';
 
-    for (let person of people) {
-        for (let film of person.films) {
-            let cFilm = film.split('/')
-            console.log (cFilm[cFilm.length - 1]);
-            if (cFilm[cFilm.length - 1] === currentRes.id) {
-                console.log (person.name);
-                let newLi = document.createElement('li');
-                newLi.textContent = person.name;
-                peopleList.append(newLi);
+    fetch(`${API}/people?limit=250`)
+    .then(res => res.json())
+    .then(res => {
+        for (let person of res) {
+            for (let film of person.films) {
+                let cFilm = film.split('/')
+                if (cFilm[cFilm.length - 1] === currentRes.id) {
+                    let newLi = document.createElement('li');
+                    newLi.textContent = person.name;
+                    peopleList.append(newLi);
+                }
             }
         }
-    }
+    })
+    .catch(err => alert(err));
 
-    console.log (people);
-    console.log (currentRes);
 
 
 

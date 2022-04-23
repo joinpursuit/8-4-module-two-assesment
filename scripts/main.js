@@ -66,7 +66,9 @@ const submitReview = (e) => {
     e.preventDefault();
     const review = e.target.review.value;
     let title = document.querySelector('#display-info h3')
-    if (!title) {
+    console.log (movieList.value);
+
+    if (!movieList.value) {
         alert('Please select a movie first');
         return;
     }
@@ -85,37 +87,39 @@ const submitReview = (e) => {
 }
 
 const showPeople = (e) => {
-  e.preventDefault();
-  let title = document.querySelector("#display-info h3");
-  if (!title) {
-    alert("Please select a movie first");
-    return;
-  }
-  title = title.textContent;
-  peopleList.innerHTML = "";
-  if (currentRes.people[0].split("/")[4] !== "") {
-    for (let person of currentRes.people) {
-      fetch(`${API}/people?limit=250`)
-        .then((res) => res.json())
-        .then((res) => {
-          for (let person of res) {
-            for (let film of person.films) {
-              let cFilm = film.split("/");
-              if (cFilm[cFilm.length - 1] === currentRes.id) {
-                let newLi = document.createElement("li");
-                newLi.textContent = person.name;
-                peopleList.append(newLi);
-              }
-            }
-          }
-        })
-        .catch((err) => alert(err));
+    e.preventDefault();
+
+    setTimeout(() => {
+    fetch(`${API}/people`);
+    }, 1500)
+
+    let title = document.querySelector('#display-info h3');
+    if (!title) {
+        alert('Please select a movie first');
+        return;
     }
-  }
-};
+    title = title.textContent;
+    peopleList.innerHTML = '';
+
+    fetch(`${API}/people?limit=250`)
+    .then(res => res.json())
+    .then(res => {
+        for (let person of res) {
+            for (let film of person.films) {
+                let cFilm = film.split('/')
+                if (cFilm[cFilm.length - 1] === currentRes.id) {
+                    let newLi = document.createElement('li');
+                    newLi.textContent = person.name;
+                    peopleList.append(newLi);
+                }
+            }
+        }
+    })
+    .catch(err => alert(err));
+}
 
 
-setTimeout((person) => {
+setTimeout(() => {
    fetch(`${API}/people`);
 }, 1500)
 

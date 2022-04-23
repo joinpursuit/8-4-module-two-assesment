@@ -12,29 +12,20 @@ const peopleList = document.getElementById('peopleList');
 
 //event listeners
 movieList.addEventListener('change', (e) => changeMovie(e));
-// movieList.addEventListener('click', (e) => fetcher(e))
 reviewForm.addEventListener('submit', (e) => submitReview(e));
 resetButton.addEventListener('click', () => resetReviews());
 peopleButton.addEventListener('click', (e) => showPeople(e));
 
-//global var for current movie
-// because this seems easiest...I want useState() plz
+//global var for current movie because this seems easiest...I want useState() plz
 let currentRes;
 
 
-// const fetcher = () => {
-//     fetch(`${API}/films`)
-//         .then(res => res.json())
-//         .then(res => populateList(res))
-//         .catch(err => alert(err));
-// }
-
-fetch(`${API}/films`)
-        .then(res => res.json())
-        .then(res => populateList(res))
-        .catch(err => alert(err));
-
-
+setTimeout(() => {
+    fetch(`${API}/films`)
+            .then(res => res.json())
+            .then(res => populateList(res))
+            .catch(err => alert(err));
+}, 1000)
 
 
 const populateList = (res) => {
@@ -48,7 +39,6 @@ const populateList = (res) => {
 
 const changeMovie = (e) => {
     e.preventDefault();
-    console.log ('CHANGE');
     movieDetails.innerHTML = ''; //ideally this would be a loop to remove all children
 
     fetch(`${API}/films/${e.target.value}`)
@@ -62,9 +52,10 @@ const changeMovie = (e) => {
 
             const description = document.createElement('p');
             description.textContent = res.description;
-
+            
             movieDetails.append(header, year, description);
 
+            //update my fake usestate()
             currentRes = res;
         })
         .catch(err => alert(err));
@@ -75,7 +66,9 @@ const submitReview = (e) => {
     e.preventDefault();
     const review = e.target.review.value;
     let title = document.querySelector('#display-info h3')
-    if (!title) {
+    console.log (movieList.value);
+
+    if (!movieList.value) {
         alert('Please select a movie first');
         return;
     }
@@ -95,6 +88,11 @@ const submitReview = (e) => {
 
 const showPeople = (e) => {
     e.preventDefault();
+
+    setTimeout(() => {
+    fetch(`${API}/people`);
+    }, 1500)
+
     let title = document.querySelector('#display-info h3');
     if (!title) {
         alert('Please select a movie first');
@@ -119,6 +117,11 @@ const showPeople = (e) => {
     })
     .catch(err => alert(err));
 }
+
+
+setTimeout(() => {
+   fetch(`${API}/people`);
+}, 1500)
 
 const resetReviews = () => reviewList.innerHTML = '';
 

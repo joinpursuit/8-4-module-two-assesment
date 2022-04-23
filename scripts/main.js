@@ -12,29 +12,20 @@ const peopleList = document.getElementById('peopleList');
 
 //event listeners
 movieList.addEventListener('change', (e) => changeMovie(e));
-// movieList.addEventListener('click', (e) => fetcher(e))
 reviewForm.addEventListener('submit', (e) => submitReview(e));
 resetButton.addEventListener('click', () => resetReviews());
 peopleButton.addEventListener('click', (e) => showPeople(e));
 
-//global var for current movie
-// because this seems easiest...I want useState() plz
+//global var for current movie because this seems easiest...I want useState() plz
 let currentRes;
 
 
-// const fetcher = () => {
-//     fetch(`${API}/films`)
-//         .then(res => res.json())
-//         .then(res => populateList(res))
-//         .catch(err => alert(err));
-// }
-
-fetch(`${API}/films`)
-        .then(res => res.json())
-        .then(res => populateList(res))
-        .catch(err => alert(err));
-
-
+setTimeout(() => {
+    fetch(`${API}/films`)
+            .then(res => res.json())
+            .then(res => populateList(res))
+            .catch(err => alert(err));
+}, 1000)
 
 
 const populateList = (res) => {
@@ -48,7 +39,6 @@ const populateList = (res) => {
 
 const changeMovie = (e) => {
     e.preventDefault();
-    console.log ('CHANGE');
     movieDetails.innerHTML = ''; //ideally this would be a loop to remove all children
 
     fetch(`${API}/films/${e.target.value}`)
@@ -62,9 +52,10 @@ const changeMovie = (e) => {
 
             const description = document.createElement('p');
             description.textContent = res.description;
-
+            
             movieDetails.append(header, year, description);
 
+            //update my fake usestate()
             currentRes = res;
         })
         .catch(err => alert(err));
@@ -102,27 +93,24 @@ const showPeople = (e) => {
     }
     title = title.textContent;
     peopleList.innerHTML = '';
-
-    fetch(`${API}/people?limit=250`)
-    .then(res => res.json())
-    .then(res => {
-        for (let person of res) {
-            for (let film of person.films) {
-                let cFilm = film.split('/')
-                if (cFilm[cFilm.length - 1] === currentRes.id) {
+    if (currentRes.people[0].split('/')[4] !== '') {
+        for (let person of currentRes.people) {
+            fetch(`${API}/people`)
+                .then(res => res.json())
+                .then(res => {
                     let newLi = document.createElement('li');
-                    newLi.textContent = person.name;
-                    peopleList.append(newLi);
-                }
-            }
+                    newLi.textContent = res.name;
+                    peopleList.append(newLi); 
+                })
+                .catch(err => alert(err));
         }
-    })
-    .catch(err => alert(err));
-
-
-
-
+    } 
 }
+
+
+setTimeout((person) => {
+   fetch(`${API}/people`);
+}, 1500)
 
 const resetReviews = () => reviewList.innerHTML = '';
 

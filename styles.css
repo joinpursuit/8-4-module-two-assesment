@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(230, 230, 250);
+    font-family: monospace;
+}
+
+@media (min-width: 400px) {
+    #reviews {
+        display: block;
+    }
+}
+
+@media ()

@@ -17,3 +17,8 @@ main{
     grid-column:2/3;
     grid-row:2/3;
 }
+@media only screen and (max-width:500px){
+    #reviews{
+        display:none;
+    }
+}

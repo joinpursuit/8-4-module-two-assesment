@@ -1,0 +1,58 @@
+body {
+    background: lavender;
+    display: grid;
+    grid-template-rows: .75fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "header" 
+    "1"
+    "2"
+    "3"
+    "4"
+    "5";
+}
+
+:not(input) {  /* https://developer.mozilla.org/en-US/docs/Web/CSS/:not */
+    font-family: monospace; /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-family */
+}
+
+header {
+    grid-area: header;
+    display: grid;
+    /* width: 75%; */
+    background: skyblue;
+    grid-template-areas: 
+    "left    right";
+}
+
+header img {
+    grid-area: left;
+    width: 75%;
+}
+
+header h1 {
+    grid-area: right;
+}
+
+#Select-movie{
+    grid-area: 1;
+}
+
+#Add-review {
+    grid-area: 2;
+}
+
+#Movie-details {
+    grid-area: 3;
+}
+
+#People {
+    grid-area: 4;
+}
+
+#reviews {
+    grid-area: 5;
+}
+
+span {
+    font-weight: bold;
+}

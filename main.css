@@ -1,0 +1,12 @@
+.hidden{
+    display: none;
+}
+
+body{
+    background-color: lavender;
+    font-family: monospace;   
+}
+
+header{
+    background-color: skyblue;
+}

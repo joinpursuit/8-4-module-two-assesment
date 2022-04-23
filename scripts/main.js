@@ -7,16 +7,31 @@ const movieDetails = document.getElementById('display-info');
 const reviewForm = document.getElementById('reviewForm');
 const reviewList = document.querySelector('#reviews ul');
 const resetButton = document.getElementById('reset-reviews');
+const peopleButton = document.getElementById('show-people');
+const peopleList = document.getElementById('peopleList');
 
 //event listeners
 movieList.addEventListener('change', (e) => changeMovie(e));
 reviewForm.addEventListener('submit', (e) => submitReview(e));
-resetButton.addEventListener('click', (e) => resetReviews());
+resetButton.addEventListener('click', () => resetReviews());
+peopleButton.addEventListener('click', (e) => showPeople(e));
+
+//global var for current movie and all the people
+// because this seems easiest...I want useState() plz
+let currentRes;
+let people;
 
 fetch(`${API}/films`)
     .then(res => res.json())
     .then(res => populateList(res))
     .catch(err => alert(err));
+
+
+fetch(`${API}/people?limit=250`)
+    .then(res => res.json())
+    .then(res => people = res)
+    .catch(err => alert(err));
+
 
 const populateList = (res) => {
     for (let movie of res) {
@@ -44,6 +59,7 @@ const changeMovie = (e) => {
 
             movieDetails.append(header, year, description);
 
+            currentRes = res;
         })
         .catch(err => alert(err));
 
@@ -52,7 +68,12 @@ const changeMovie = (e) => {
 const submitReview = (e) => {
     e.preventDefault();
     const review = e.target.review.value;
-    const title = document.querySelector('#display-info h3').textContent;
+    let title = document.querySelector('#display-info h3')
+    if (!title) {
+        alert('Please select a movie first');
+        return;
+    }
+    title = title.textContent;
     e.target.review.value = '';
 
     const strong = document.createElement('strong');
@@ -66,7 +87,36 @@ const submitReview = (e) => {
     reviewList.append(reviewLi);
 }
 
-const resetReviews = (e) => reviewList.innerHTML = '';
+const showPeople = (e) => {
+    let title = document.querySelector('#display-info h3');
+    if (!title) {
+        alert('Please select a movie first');
+        return;
+    }
+    title = title.textContent;
+    peopleList.innerHTML = '';
+
+    for (let person of people) {
+        for (let film of person.films) {
+            let cFilm = film.split('/')
+            console.log (cFilm[cFilm.length - 1]);
+            if (cFilm[cFilm.length - 1] === currentRes.id) {
+                console.log (person.name);
+                let newLi = document.createElement('li');
+                newLi.textContent = person.name;
+                peopleList.append(newLi);
+            }
+        }
+    }
+
+    console.log (people);
+    console.log (currentRes);
+
+
+
+}
+
+const resetReviews = () => reviewList.innerHTML = '';
 
 
 

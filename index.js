@@ -11,14 +11,13 @@ const movieBox = document.querySelector("select");
 const peopleButton = document.getElementById("show-people");
 const listOfPeople = document.getElementById("people");
 
-let movie;
-
 setTimeout(() => {
     fetch(API_URL)
         .then(res => res.json())
         .then(data => boxPopuli(data))
-        .catch((error) => console.log("WE GOT AN ERRAH HEAH:", error));    
-}, 1000);
+        .catch((error) => console.log("WE GOT AN ERRAH HEAH:", error));
+}, 1000); 
+//Setting my fetch to wait a dang second is the only way I can get cypress to not freak out
 
 const boxPopuli = ((data) => {
     console.log(data);
@@ -33,8 +32,6 @@ const boxPopuli = ((data) => {
 movieBox.addEventListener("change", (e) => {
     e.preventDefault();
     chooseMovie(e);
-    //listPeople(e);
-    //console.log(e.target.value);
 });
 
 const chooseMovie = (e) => {
@@ -61,27 +58,26 @@ addReview.addEventListener("submit", (e) => {
     let selectedMovie = movieBox.selectedIndex;
 
     let strong = document.createElement("strong");
-    
-    strong.textContent = movieBox[selectedMovie].textContent + ": ";    
-    
+
+    strong.textContent = movieBox[selectedMovie].textContent + ": ";
+
     let reviewLi = document.createElement("li");
     reviewLi.append(strong);
-    if (movieBox[selectedMovie].textContent===""){
+    if (movieBox[selectedMovie].textContent === "") {
         alert("Please select a movie first");
-    } else if (e.target.review.value==="") {
+    } else if (e.target.review.value === "") {
         alert("Please input a review");
     } else {
         reviewLi.append(`: ${e.target.review.value}`);
         reviewList.append(reviewLi);
-        e.target.review.value="";
+        e.target.review.value = "";
     }
 });
 
 reviewReset.addEventListener("click", (e) => {
     e.preventDefault();
     let allReviews = document.querySelectorAll("ul li");
-    for(let review of allReviews){
+    for (let review of allReviews) {
         review.remove();
     }
-    console.log(allReviews);
 });

@@ -1,0 +1,39 @@
+body{
+    font-family: monospace;
+    background-color: lavender;
+    display: grid;
+    width: 90%;
+    margin: auto;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: 200px 400px 400px 200px;
+
+    grid-template-areas:
+    'h h h'
+    'm m m'
+    'm m m'
+    'f f f';
+    
+}
+
+header{
+    height: 200px;
+    /* background-image: url(images/ghibli-logo.png);  */
+    grid-area: h;
+    text-align: right;
+    background-color: skyblue;
+    /* background-position: left; */
+}
+main{
+    grid-area: m;
+}
+
+img{
+    width: 400px;
+    height: 200px;
+}
+@media (max-width:500px){
+ #reviews{
+    display:block;
+    display:none;
+}
+}

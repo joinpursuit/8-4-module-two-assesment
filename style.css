@@ -1,0 +1,44 @@
+body {
+    background: lavender;
+    font-size: large;
+}
+main {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header" 
+    "1";
+}
+
+:not(input) {  /* https://developer.mozilla.org/en-US/docs/Web/CSS/:not */
+    font-family: monospace; /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-family */
+}
+
+header {
+    grid-area: header;
+    display: grid;
+    width: auto;
+    background: skyblue;
+    grid-template-areas: 
+    "left    right";
+}
+
+header img {
+    grid-area: left;
+    width: 75%;
+}
+
+header h1 {
+    grid-area: right;
+}
+
+span {
+    font-weight: bold;
+}
+
+@media (max-width: 500px) {
+    #reviews {
+        display: none;
+    }
+}

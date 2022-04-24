@@ -20,9 +20,14 @@ fetch(BASE_URL)
        let movieId = ghibliFilms[i].id;
        console.log(titleMovie);
        console.log(movieId);
-       movieOptions.setAttribute('idValue' `${movieId}`);
+       movieOptions.setAttribute('value', `${movieId}`);
        movieOptions.textContent = titleMovie;
        selectMovie.append(movieOptions);
        selectMovie.innerHTML += selectMovie;
    }
+   selectMovie.addEventListener('change',(event) => {
+       // researched change event: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+        let titleOfFilm = selectMovie.options[selectMovie.selectedIndex].text
+        // researched selectedIndex : https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex
+   })
 })

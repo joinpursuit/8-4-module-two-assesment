@@ -25,5 +25,11 @@ header {
     height: 150px;
     margin-bottom: 30px;
     padding: 10px;
-    width: 70%;
+    width: 75%;
 } 
+
+@media screen and (max-width: 500px) {
+    #reviews {
+      display: none;
+    }
+  }

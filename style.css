@@ -1,0 +1,22 @@
+header {
+    background-color: skyblue;
+    width: 75%;
+}
+
+  body {
+    background-color: rgb(230, 230, 250);
+    font-family: monospace;
+}
+
+@media screen and (max-width: 500px){
+    #reviews {
+        display: none
+    }
+}
+
+@media screen and (min-width: 501px){
+    #reviews {
+        display: block
+    }
+}
+

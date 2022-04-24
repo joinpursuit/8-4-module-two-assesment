@@ -1,0 +1,40 @@
+
+
+
+body {
+background-color: lavender;
+font-family: monospace;
+margin: auto;
+width: 75%;
+
+
+}   
+
+header{
+display: flex;
+grid-template-columns: 1fr 1fr;
+background: skyblue;
+
+
+}
+
+header h1{
+    font-size:xx-large
+    text al
+}
+
+img    {
+width: 70%;
+height: inherit;
+
+}
+
+@media  screen and (max-width: 500px) {
+#reviews{
+display: none;
+margin: 5% auto;
+    width: 50%
+    
+   
+}
+}

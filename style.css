@@ -1,14 +1,15 @@
 body {
     background: lavender;
+    font-size: large;
+}
+main {
     display: grid;
-    grid-template-rows: .75fr 1fr 1fr 1fr 1fr 1fr;
+    min-height: 100vh;
+    /* grid-template-rows: .3fr 1fr;  */
+    grid-template-columns: 1fr;
     grid-template-areas: 
     "header" 
-    "1"
-    "2"
-    "3"
-    "4"
-    "5";
+    "1";
 }
 
 :not(input) {  /* https://developer.mozilla.org/en-US/docs/Web/CSS/:not */
@@ -18,7 +19,7 @@ body {
 header {
     grid-area: header;
     display: grid;
-    /* width: 75%; */
+    width: auto;
     background: skyblue;
     grid-template-areas: 
     "left    right";
@@ -33,7 +34,7 @@ header h1 {
     grid-area: right;
 }
 
-#Select-movie{
+/* #Select-movie{
     grid-area: 1;
 }
 
@@ -50,8 +51,8 @@ header h1 {
 }
 
 #reviews {
-    grid-area: 5;
-}
+    grid-area: 5; 
+}*/
 
 span {
     font-weight: bold;

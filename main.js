@@ -35,7 +35,7 @@ movies.addEventListener("change", (e) => {
 
 review.addEventListener("submit", (e) => {
   e.preventDefault();
-
+  let name = e.target.review.value;
   if (!movies.value){
       alert("Please select a movie first")
   } else {

@@ -14,3 +14,11 @@ body {
         display: none;
     }
 }
+
+header {
+    background-color: skyblue;
+}
+
+h1 {
+    float: right;
+}

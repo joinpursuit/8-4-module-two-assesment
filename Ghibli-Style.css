@@ -1,0 +1,46 @@
+
+
+
+
+body {
+   background-color: lavender; 
+   font-family: monospace;
+}
+header {
+    background-color: skyblue;
+    max-width: 75%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: auto;
+    align-content: space-around;
+}
+img {
+    text-align: left;
+    height: 300px;
+    order: 2;
+}
+.logo {
+   
+    background-repeat: no-repeat;
+    text-align: left;
+    height: 300px;
+    order: 2;
+}
+header h1 {
+    text-align: right;
+
+}
+
+
+ @media (min-width: 400px) {
+     #reviews{
+         display: none;
+     }
+ }
+ @media (max-width: 780px) {
+    #reviews{
+        display: block;
+    }
+};
+   

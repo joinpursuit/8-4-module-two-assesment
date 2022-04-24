@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Ghibli 8-4 Module2 Assessment JB</title>
+    <link rel="stylesheet" href="Ghibli-Style.css" />
+    <script defer src="Ghibli.js"></script>
+</head>
+<body>
+    <header class="logo">
+        <img src = "./images/ghibli-logo.png"/>
+        <h1>Ghibli Review App</h1>
+        
+    
+    </header>
+    <main>
+        <section id="select"> 
+            <h2>Select a movie</h2>
+            <select id="movie-selection"> 
+                <option value=""></option>        
+            </select>
+        </section>
+        
+        <section>
+            <h2>Movie Details</h2>
+            <div id="display-info">
+                <h3 id="movie-heading"></h3>
+                    <p id="movie-year"></p>
+                    <p id="movie-details"></p>
+                
+            </div>
+        </section>
+        <section class="form">
+            <h2>Add a review</h2>
+           
+            <form id="reviews-form">
+                <label for="reviews-form">   
+                <p>Your review:</p></label>
+                <textarea id="review" input="text"></textarea>
+                <button type="submit" id="review-button" 
+                >submit</submit>
+                </label>
+            </form>
+              
+        </section>
+        <section id="reviews-display">
+            <h2>Reviews</h2>
+            <ul id="reviews-list">
+              
+            </ul>
+            <button id="reset-reviews">Reset Reviews</button>
+            <!-- clears reviews -->
+        </section>
+        <section id="show-people">
+            <h2>Show People</h2>
+            <ol id="people-list">
+              
+            </ol>
+            <button id="people">Show People</button>
+         
+        </section>
+
+    </main>
+    
+</body>
+</html>

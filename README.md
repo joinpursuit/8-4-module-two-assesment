@@ -86,7 +86,7 @@ While it does not need to look exactly the same, it should include the following
       - [ ] `label`, `for` = `review`: `Your review`
       - [ ] `input`, `id` = `review`: type text
       - [ ] `input`: type submit
-  - [ ] `section`
+  - [ ] `section
 
     - [ ] `h2`: `Movie details`
     - [ ] `div`, `id` = `display-info`: starts empty, will be populated with `h3` and two `p` elements, when a movie is selected

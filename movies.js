@@ -53,3 +53,17 @@ const createMovieDetails = () => {
     });
 };
 
+const form = document.querySelector('#form-review');
+const ul = document.querySelector('ul')
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!select.value) {
+        alert('Need to select movie.')
+    } else {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${h3.innerHTML}: </strong>  `;
+        console.log(li.innerHTML)
+        ul.appendChild(li)
+        form.reset();
+    }
+});

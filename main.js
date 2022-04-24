@@ -1,21 +1,22 @@
-//Set up all necessary links to retrieve data from the API:
+//Links to retrieve data from API
 const BASE_URL = "https://ghibliapi.herokuapp.com/";
 const film_url = `${BASE_URL}films/`;
 const people_url = `${BASE_URL}people/`;
 
-//DOM element to select any movie from a list of all movie titles (dropdown menu):
+//DOM element - dropdown menu to select any movie from a list of all movies' titles
+const select = document.querySelector("select");
 const dropdown = document.getElementById("dropdown");
 
-//Print out movie's details (title, release year and description):
+//Created elements for the Movies' titles, release years and descriptions
 const display = document.getElementById("display-info");
 const h3Title = document.createElement("h3");
 const releaseYear = document.createElement("p");
 const movieDescription = document.createElement("p");
 
-//DOM element to add a review:
+//DOM Element - Form used to Submit Reviews for movies
 const reviewForm = document.querySelector("form");
 
-//Show list of people
+//Shows the list of people's names related to the movie
 const showPeople = document.getElementById("show-people");
 const peopleNames = document.querySelector("ol");
 
@@ -25,7 +26,7 @@ fetch(`${film_url}`)
   .then((response) => response.json())
   .then((json) => {
     for (let e of json) {
-      //Populate the list of all movie titles in the dropdown menu Select Box
+      //Populate the list of all movie titles in the dropdown menu's Select Box
       const option = new Option(e.title, e.id);
       option.textContent = e.title;
       option.value = e.id;
@@ -41,6 +42,7 @@ fetch(`${film_url}`)
             releaseYear.textContent = movie.release_date;
             movieDescription.textContent = movie.description;
             display.append(h3Title, releaseYear, movieDescription);
+            peopleNames.textContent = "";
           }
         }
 
@@ -70,9 +72,9 @@ fetch(`${film_url}`)
   });
 
 /**
- * generateReviews a helper func to display reviews by users in Reviews section
- * @param {Object[]} json -  Array of objects retrieved from API with all movies' information
- * @alert {String} - If no input movie in the select box and users press submit review
+ * generateReviews - function to display reviews by users in the Reviews section
+ * 1) Array of objects retrieved from API with all movies' information
+ * 2) An alert message - shown if select box has no movie title & user presses Submit Review button
  */
 const generateReviews = (json) => {
   reviewForm.addEventListener("submit", (event) => {
@@ -85,12 +87,12 @@ const generateReviews = (json) => {
       let li = document.createElement("li");
       li.innerHTML = `<strong>${movie.title}:</strong> ${reviewInput}`;
       ul.append(li);
+      reviewForm.reset();
     }
-    reviewForm.reset();
   });
 };
 
-//Reset button will reset (clear) all movie's reviews
+//Reset Button to remove all submitted reviews
 const resetReview = document.getElementById("reset-reviews");
 resetReview.addEventListener("click", (event) => {
   event.preventDefault();

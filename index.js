@@ -20,6 +20,7 @@ getFilms();
 // ----------------------------- Select a Movie ----------------------------- //
 function selectFilms(allFilms) {
     const section = document.querySelector('#titles');
+    setTimeout(request, 1000);
     allFilms.filter(films => {
         section.innerHTML += `<option value="${films.title}">${films.title}</option>`
     })
@@ -125,5 +126,15 @@ function getPeopleInfo(peopleURL, url) {
             }
         })
 }
+
+function request(){
+    fetch(url)
+}
+
+
+
+
+
+
 
 // All tests pass after a couple refreshes. Not sure why.

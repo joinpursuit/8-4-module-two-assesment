@@ -1,5 +1,9 @@
 const url = "https://ghibliapi.herokuapp.com/films";
+
 let allFilms;
+let movieTitle;
+let allReviews = {};
+
 function getFilms() {
     fetch(url)
         .then((res) => res.json())
@@ -13,8 +17,6 @@ function getFilms() {
 }
 getFilms();
 
-let movieTitle;
-let allReviews = {};
 
 function selectFilms(allFilms) {
     const section = document.querySelector('#titles');
@@ -22,9 +24,11 @@ function selectFilms(allFilms) {
         section.innerHTML += `<option value="${films.title}">${films.title}</option>`
     })
     section.addEventListener('change', (e) => {
-        if (document.querySelector('#titles option') !== ''){
+        if (document.querySelector('#titles option') !== '') {
             movieTitle = e.target.value;
             movieDescription(e.target.value);
+            const list = document.querySelectorAll('#People li');
+            list.forEach(li => li.remove())
         }
     });
 
@@ -36,9 +40,9 @@ function movieDescription(title) {
     allFilms.filter((film, i) => {
         if (film.title === title) {
             sectionDiv.innerHTML = `<h2>${title}</h2><p>${allFilms[i]['release_date']}</p><p>${allFilms[i]['description']}</p>`;
-            getPeople(allFilms[i]);
+            movieArry = allFilms[i]['people'];
         }
-       
+
     })
     addReviews(title);
 }
@@ -57,35 +61,53 @@ sectionForm.addEventListener("submit", (event) => {
 
 function addReviews(title) {
     const sectionReviews = document.querySelector('#reviews ul')
-    // console.log(allReviews);
-
     if (Object.keys(allReviews).length) {
         sectionListItems = document.querySelectorAll('li')
         sectionListItems.forEach(x => x.remove());
 
-
         for (const [key, value] of Object.entries(allReviews)) {
-            sectionReviews.innerHTML += `<li><span>${key}</span>: ${value}</li>`
+            sectionReviews.innerHTML += `<li><strong>|<b>${key}</strong>|</b>: ${value}</li>`
         }
     }
 }
-let peopleObj;
 
-function getPeopleInfo(x){
+function deleteReviews(){
+    console.log('im here bitch')
+    const listedReviews = document.querySelector('#reviews ul')
+    listedReviews.innerHTML = '';
+}
+
+
+
+// ----------------------------- People Listed ----------------------------- //
+let movieArry;
+console.log(movieArry)
+
+const sectionPeople = document.querySelector('#People');
+sectionPeople.addEventListener("click", (e) => {
+    movieArry.forEach(x => {
+        console.log(x)
+        getPeopleInfo(x);
+    })
+    document.getElementById('show-people').disabled = true;
+})
+
+function getPeopleInfo(x) {
+    const sectionOL = document.querySelector('#People ol')
     fetch(x)
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        peopleObj = data
-
-    })
+        .then((res) => res.json())
+        .then((data) => {
+            if (data.length > 1) { // For multiple names listed in an object
+                data.forEach(x => {
+                    sectionOL.innerHTML += `<li>${x.name}</li>`
+                })
+            } else {  // For one name listed at a time
+                sectionOL.innerHTML += `<li>${data.name}</li>`
+            }
+        })
 }
-function getPeople(movieArry){
-    console.log(movieArry);
-    const peopleArry = movieArry['people'];
-    console.log(peopleArry[0])
-    peopleArry.forEach(x => {
-       
-    })
 
-}
+
+
+
+

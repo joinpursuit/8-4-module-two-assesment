@@ -56,3 +56,9 @@ header h1 {
 span {
     font-weight: bold;
 }
+
+@media (max-width: 500px) {
+    #reviews {
+        display: none;
+    }
+}

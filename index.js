@@ -92,24 +92,9 @@ let movieTitle = selectTitles.value
   .then((response) => {
     return response.json();
   })
- .then((people) => {
-        if (movieTitle !== "") {
-          for (let person of people) {
-            for (let film of person.films) {
-              if (film.includes(movieTitle)) {
-                let listItem = document.createElement("li");
-                listItem.textContent = person.name;
-               peopleOL.append(listItem);
-                break;
-              }
-            }
-          }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
+ 
       });
-  });
+  
 
 
 

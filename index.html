@@ -17,42 +17,36 @@
     <main>
       <section>
         <h2>Select a movie</h2>
-        <select id="titles">
+        <select id="titles" name="titles">
           <option value=""></option>
         </select>
       </section>
 
       <section>
         <h2>Add a review</h2>
-        <form>
-            <label for="review">Your review:</label>
-            <br>
-            <input id="review" type="text">
-            <input type="submit">
+        <form id="addReview">
+          <label for="review">Your review:</label>
+          <br/>
+          <input id="review" name="review" type="text" />
+          <input type="submit" value="Submit Review" />
         </form>
       </section>
 
-      <section> 
-          <h2>Movie details</h2>
-          <div id="display-info">
-          </div>
+      <section>
+        <h2>Movie details</h2>
+        <div id="display-info"></div>
       </section>
 
       <section>
-          <h2>People</h2>
-          <ol>
-              <li></li>
-          </ol>
-          <button id="show-people">Show People</button>
+        <h2>People</h2>
+        <ol></ol>
+        <button id="show-people">Show People</button>
       </section>
-      
-      <section id=reviews>
-          <h2>Reviews</h2>
-          <ul>
-            <li></li>
-          </ul>
-        <button id= "reset-reviews">Reset Reviews</button>
 
+      <section id="reviews">
+        <h2>Reviews</h2>
+        <ul></ul>
+        <button id="reset-reviews">Reset Reviews</button>
       </section>
     </main>
   </body>

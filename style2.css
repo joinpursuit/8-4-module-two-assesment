@@ -1,0 +1,33 @@
+body{
+    background-color: lavender;
+    font-family: monospace;
+}
+
+header{
+    border: dotted black;
+    background-color: skyblue;
+    width: 75%; 
+    opacity: 80%;
+}
+
+h1{
+    text-align: right;
+}
+
+img{
+    height: 200px;
+}
+
+@media(min-width:500px){
+    #reviews{
+        display: block;
+        opacity: 60%;
+    }
+}
+
+@media(max-width:500px){
+    #reviews{
+        display: none;
+        opacity: 60%;
+    }
+}

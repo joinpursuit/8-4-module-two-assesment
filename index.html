@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script defer src="movies.js"></script>
+    <title>Taji's Movies</title>
+</head>
+<body>
+    <header>
+        <img src="./images/ghibli-logo.png" alt="Ghibli logo">
+        <h1>Ghibli Review App</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Select a movie</h2>
+            <select id="titles">
+                <option></option>
+                <!--Other options with show via JS-->
+            </select>
+        </section>
+        <section>
+            <h2>Add a review</h2>
+            <form id="form-review">
+                <label for="review">Your review</label>
+                <input id="review" type="text">
+                <input type="submit">
+            </form>
+        </section>
+        <section>
+            <h2>Movie details</h2>
+            <div id="display-info">
+                <h3 id="title"></h3>
+                <p id="release-year"></p>
+                <p id="description"></p>
+            </div>
+        </section>
+        <section>
+            <h2>People</h2>
+            <ol>
+                <!--Will be populated with li tag when people's names are add via JS-->
+            </ol>
+            <button id="show-people">Show People</button>
+        </section>
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <ul>
+                <!--Will be populated with li tag when reviews are add via JS-->
+            </ul>
+            <button id="reset-reviews">Reset Reviews</button>
+        </section>
+    </main>
+</body>
+</html>

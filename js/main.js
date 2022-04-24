@@ -42,18 +42,6 @@ const getData = () => {
         }
       }
 
-    form.addEventListener('submit', (event) => {
-      event.preventDefault();
-      ul.append(li);
-      console.log(ul)
-    
-      console.log(filmTitle)
-      li.append(strong);
-      li.innerHTML = `<strong>${filmTitle}</strong>: ${inputYourReview}`;
-      console.log(li.innerHTML)
-    })
-
-
   })
 })
 

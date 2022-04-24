@@ -4,7 +4,7 @@ const title = document.querySelector("#title");
 const releaseYear = document.querySelector("#release-year");
 const description = document.querySelector("#description");
 const review = document.querySelector("#review-form");
-const reviews = document.querySelector("#review-list");
+const reviews = document.querySelector("#reviews");
 const peopleSection = document.querySelector("#people-section");
 const peopleList = document.querySelector("#people-list");
 
@@ -35,13 +35,16 @@ movies.addEventListener("change", (e) => {
 
 review.addEventListener("submit", (e) => {
   e.preventDefault();
-  let name = e.target.review.value;
-  if (name) {
+
+  if (!movies.value){
+      alert("Please select a movie first")
+  } else {
     const reviewItem = document.createElement("li");
+    reviewItem.classList.add("review-items");
     reviewItem.innerHTML = `<strong>${title.innerHTML}: </strong>${name}`;
     reviews.append(reviewItem);
+    review.reset();
   }
-  review.reset();
 });
 
 peopleSection.addEventListener("click", (e) => {
@@ -50,7 +53,7 @@ peopleSection.addEventListener("click", (e) => {
     .then((response) => response.json())
     .then((response) => {
       let persons = response.filter((person) => {
-          return person.id = option.value});
+          return person.id = movies.value});
       persons.forEach((person) => {
         let character = document.createElement("li");
         character.innerHTML = person.name;
@@ -61,7 +64,7 @@ peopleSection.addEventListener("click", (e) => {
 
 reviews.addEventListener("click", (e) => {
     e.preventDefault();
-    const allReviews = document.querySelectorAll("li");
+    const allReviews = document.querySelectorAll(".review-items");
     allReviews.forEach(review => {
         review.remove()});
 })

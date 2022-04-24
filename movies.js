@@ -60,10 +60,11 @@ form.addEventListener('submit', (e) => {
     if (!select.value) {
         alert('Need to select movie.')
     } else {
+        const input = document.getElementById('review').value
         const li = document.createElement('li');
-        li.innerHTML = `<strong>${h3.innerHTML}: </strong>  `;
+        li.innerHTML = `<strong>${h3.innerHTML}: </strong>  ${input}`;
         console.log(li.innerHTML)
         ul.appendChild(li)
         form.reset();
-    }
+    };
 });

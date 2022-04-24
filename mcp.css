@@ -1,0 +1,24 @@
+body{
+    display:grid;
+    background-color:lavender;
+    font-family: monospace;
+    grid-template-columns: 15% 70% 15%;
+}
+header{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    background-color: skyblue;
+    padding-right: 10%;
+}
+header h1{
+    text-align: right;
+}
+main{
+    grid-column:2/3;
+    grid-row:2/3;
+}
+@media only screen and (max-width:500px){
+    #reviews{
+        display:none;
+    }
+}

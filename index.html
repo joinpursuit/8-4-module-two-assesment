@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="./index.js"></script>
+    <title>Ghibli Review App</title>
+    <link rel="stylesheet" href="./mcp.css">
+</head>
+<body>
+    <header>
+        <h1>Ghibli Review App</h1>
+        <img width=400 height=200 src="./images/ghibli-logo.png" alt="Ghibli logo">
+        </header>
+    <main>
+        <section id="titles">
+            <h2>Select a movie</h2>
+            <select>
+                <option></option>
+            </select>
+        </section>
+        <section>
+            <h2>Movie details</h2>
+            <div id="display-info">
+            </div>
+        </section>
+        <section>
+            <h2>Add a review</h2>
+            <form id="addReview">
+                <label for="review">Your Review</label>
+                <input id="review" name="review" placeholder="Review" type="text">
+                <input type="submit">
+            </form>
+        </section>
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <ul id="reviewList">
+            </ul>
+            <button id="reset-reviews">Reset Reviews</button>
+        </section>
+        <section>
+            <h2>People</h2>
+            <ol id="people">
+            </ol>
+            <button id="show-people">Show People</button>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,16 @@
+body {
+    background-color: lavender;
+}
+
+img {
+    background-color: aquamarine;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 150px;
+}
+header {
+    text-align: center;
+    background-color: aquamarine;
+    margin-left: 100px;
+    margin-right: 100px ;
+}

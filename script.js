@@ -44,17 +44,17 @@ sec2.addEventListener("submit", (e) => {
   } else {
     let userReview = document.createElement("li");
     userReview.classList.add("userReview")
-    userReview.innerHTML = `<strong>${movieName.innerText}</strong>:${review.value}`;
+    userReview.innerHTML = `<b>${movieName.innerText}.</b>: ${review.value}`;
     reviewsList.append(userReview);
+    form.reset();
   }
-  form.reset();
 });
 
 reviews.addEventListener("click", (e) => {
   e.preventDefault();
   const allLi = document.querySelectorAll(".userReview");
   allLi.forEach((li) => {
-    li.classList.add("hidden");
+    li.remove();
   });
 });
 

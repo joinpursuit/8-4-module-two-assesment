@@ -58,7 +58,7 @@ const ul = document.querySelector('ul')
 form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!select.value) {
-        alert('Need to select movie.')
+        alert('Please select a movie first')
     } else {
         const input = document.getElementById('review').value
         const li = document.createElement('li');
@@ -68,3 +68,9 @@ form.addEventListener('submit', (e) => {
         form.reset();
     };
 });
+
+const reviews = document.querySelector('#reviews');
+reviews.addEventListener('click', (e) => {
+    e.preventDefault();
+    ul.remove();
+})

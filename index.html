@@ -13,7 +13,7 @@
   <body>
     <header>
       <h1 id = "title">Ghibli Review App</h1>
-      <img src="./images/ghibli-logo.png" alt="">
+      <img src="./images/ghibli-logo.png" alt="Ghibli logo">
     </header>
     
     
@@ -21,14 +21,15 @@
 
         <section id = "select-movie">
                 <h2>Select a movie</h2>
-                <select name="titles" id="titles">
+                <select id="titles" onchange="details(data)">
+                    <!--found onchange here.  tabnine.com/academy/javascript/how-to-use-option-selected-property/ -->
                     <option value=""></option>
                 </select>
         </section>
 
         <section id = "review-input"> 
             <h2>Add a review</h2>
-            <form action="">
+            <form action="" id = "reviewForm">
                 <label for="review">Your review:</label> 
                 <Br></Br>
                 <input id = "review" type="text">
@@ -56,7 +57,7 @@
 
         </section>
 
-            <section id = "review-list">
+            <section id = "reviews">
                 <h2>Reviews</h2>
                 <ul>
     

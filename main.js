@@ -1,14 +1,13 @@
 const base_url = "https://ghibliapi.herokuapp.com";
 
- let data;
  let peopledata;
+ let data;
  
  function getdata () {
      fetch(`${base_url}/films`)
      .then((response) => response.json())
      .then((json) => {   
      data = json;
-
          dropdownInput(data);
      })
      .catch((err) => {
@@ -30,8 +29,6 @@ const base_url = "https://ghibliapi.herokuapp.com";
      titles.append(option);
      // console.log(data.length)
  }
-
-
  }
 
  function details(data) {
@@ -42,24 +39,17 @@ const base_url = "https://ghibliapi.herokuapp.com";
          h3.textContent = data[i].title;
          displayInfo.append(h3);
        
-
          const releaseYear = document.createElement("p");
          releaseYear.textContent = data[i].release_date;
       
          displayInfo.append(releaseYear);
-
 
          const description = document.createElement('p');
          description.textContent = data[i].description;
          displayInfo.append(description);
 
      }
-
-
-
   }
-
-
  }
  
  const userReviewForm = document.querySelector("#reviewForm");
@@ -70,7 +60,6 @@ const base_url = "https://ghibliapi.herokuapp.com";
    
      userReview.textContent = userReview;
      submitReview(userReview);
-
    
  })
 // user review
@@ -93,11 +82,9 @@ const base_url = "https://ghibliapi.herokuapp.com";
 
  }
 
+ const resetReviews = document.querySelector("#reset-reviews");
 
-
- const resetReview = document.querySelector("#reset-reviews");
-
- resetReview.addEventListener("click", (event) => {
+ resetReviews.addEventListener("click", (event) => {
      ul.innerHTML = "";
  })
 
@@ -123,19 +110,13 @@ const base_url = "https://ghibliapi.herokuapp.com";
  }));
 
  const ol = document.querySelector("ol");
-
  function listOfPeople(peopledata) {
-    
-     for (let i = 0; i < peopledata.length; i++){
-         
+     for (let i = 0; i < peopledata.length; i++){     
          if (peopledata[i].films[0].split("/")[4] === titles.value) {
-            
-
              const li = document.createElement("li");
              li.innerHTML = `${peopledata[i].name}`
              ol.append(li);
          } 
-
      }
  }
  setTimeout(getdata,1000);

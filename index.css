@@ -1,0 +1,35 @@
+header {
+    background-color: skyblue;
+    max-width: 75%;
+}
+body{
+    background-color: lavender;
+    font-family: monospace;
+}
+
+body {
+    background-color: rgb(230, 230, 250);
+    font-family: monospace;
+}
+
+#reviews{
+    display: block;
+}
+
+@media (min-width: 500px) {
+    #reviews {
+        display: block;
+    }
+}
+
+@media (max-width: 500px) {
+    #reviews {
+        display: none;
+    }
+}
+
+img{
+    max-width: 75%;
+    height: 60px;
+    align-content: center;
+}

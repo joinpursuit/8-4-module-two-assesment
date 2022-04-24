@@ -8,6 +8,14 @@ header{
     width: 75%; 
 }
 
+h1{
+    text-align: right;
+}
+
+img{
+    height: 200px;
+}
+
 @media(min-width:500px){
     #reviews{
         display: block;

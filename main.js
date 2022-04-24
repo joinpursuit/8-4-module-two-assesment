@@ -32,6 +32,7 @@ const displayArea = document.querySelector("#display-info");
 
 //when a movie is selected, add the relevant contents to the display area
 
+//hold all selected movie id's to be used later in 'show people'
 let optionsSelected = [];
 
 dropDown.addEventListener("change", (event) => {
@@ -57,18 +58,18 @@ form.addEventListener("submit", (event) => {
   const userInput = event.target.review.value;
 
   //does not pass cypress
-  if (!title.textContent) {
-    alert("Please select a movie first");
+  if(userInput && document.querySelector('select').value === ''){
+    alert("Please select a movie first")
+  }else{
+      movies.filter((el) => {
+        if (title.textContent === el.title) {
+          const listItem = document.createElement("li");
+          listItem.innerHTML = `<strong>${el.title}:</strong> ${userInput}`;
+          reviewList.append(listItem);
+          form.reset();
+        }
+      });
   }
-
-  movies.filter((el) => {
-    if (title.textContent === el.title) {
-      const listItem = document.createElement("li");
-      listItem.innerHTML = `<strong>${el.title}:</strong> ${userInput}`;
-      reviewList.append(listItem);
-      form.reset();
-    }
-  });
 });
 
 //call the reset button and remove all elements inside the ul
@@ -79,34 +80,27 @@ resetButton.addEventListener("click", () => {
 });
 
 ///////SHOW PEOPLE////////
-let people;
 
 const peopleAPI = "https://ghibliapi.herokuapp.com/people";
 
-function getPeople() {
-  fetch(peopleAPI)
-    .then((res) => res.json())
-    .then((data) => {
-      people = data;
-      //   console.log(people);
-    });
-}
-
-getPeople();
-
 const showPeople = document.querySelector("#show-people");
-const peopleList = document.querySelector("section ol");
 
 showPeople.addEventListener("click", () => {
-  for (let option of optionsSelected) {
-    people.filter((person) => {
-      person.films.filter((link) => {
-        if (link.includes(option)) {
-          const numberedItem = document.createElement("li");
-          peopleList.append(numberedItem);
-          numberedItem.textContent = person.name;
+    const peopleList = document.querySelector("section ol");
+
+    fetch(peopleAPI)
+    .then((res) => res.json())
+    .then((data) => {
+        for (let option of optionsSelected) {
+          data.filter((person) => {
+            person.films.filter((link) => {
+              if (link.includes(option)) {
+                const numberedItem = document.createElement("li");
+                peopleList.append(numberedItem);
+                numberedItem.textContent = person.name;
+              }
+            });
+          });
         }
-      });
     });
-  }
 });

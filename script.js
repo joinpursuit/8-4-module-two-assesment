@@ -1,26 +1,22 @@
 const BaseUrl = "https://ghibliapi.herokuapp.com/";
 const filmsEndPoint = "films";
 const peopleEndPoint = "people";
-//let sapiData;
+
+
+//Fetch People and Films Data
 function getApiData() {
     fetch(`${BaseUrl}${filmsEndPoint}`)
         .then((response) => response.json())
         .then((json) => (filmsData = json))
         .then((filmsData) => getMovieTitles(filmsData));
-    // Promise.all([fetchFilms,fetchPeople]).then(response =>{
-    //     return Promise.all(response.map(res => res.json()));
-    // }).then((films) =>{
-    //     console.log(films)
-    //     console.log(people)
-    // }).then((films) => getMovieTitles(films));
     fetch(`${BaseUrl}${peopleEndPoint}`)
         .then((response) => response.json())
-        .then((json) => (peopleData = json))
+        .then((json) => (peopleData = json));
 }
 getApiData();
 
 
-
+// Get Movie Titles to Populate Select 
 function getMovieTitles(filmsData) {
 setTimeout(movieRequest,1000);
     const options = document.querySelector("select");
@@ -42,7 +38,6 @@ movieDetails.addEventListener('change', () => {
     const displayMovieYear = document.createElement('p');
     const displayMovieDseciption = document.createElement('p');
     result = getMovieDetails(movieID);
-    //console.log(moviePeople);
     if(result){
         moviePeople = result.people;
         displayMovieTitle.textContent = result.title;
@@ -52,14 +47,11 @@ movieDetails.addEventListener('change', () => {
 
     displaySection.textContent = '';
     displaySection.prepend(displayMovieTitle, displayMovieYear, displayMovieDseciption);
-
-
-
 });
 
 
 
-
+//Review Details Form Add Event Listener
 const reviewDetails = document.querySelector("form");
 reviewDetails.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -90,8 +82,7 @@ reviewDetails.addEventListener('submit', (event) => {
 
 
 
-
-
+//Review Button Add Event Listener
 const reviewButton = document.querySelector("#reset-reviews");
 reviewButton.addEventListener('click', (event) => {
     const sectionUl = document.querySelector('#reviews ul');
@@ -100,6 +91,7 @@ reviewButton.addEventListener('click', (event) => {
 });
 
 
+//Get Movie From Movie ID 
 function getMovieDetails(movieID) {
     for (let i = 0; i < filmsData.length; i++) {
         if (filmsData[i].id === movieID) {
@@ -109,6 +101,8 @@ function getMovieDetails(movieID) {
     }
 }
 
+
+//People Button Add Event Listener
 let people;
 const peopleButton = document.querySelector("#show-people");
 peopleButton.addEventListener('click', (event) => {
@@ -127,6 +121,8 @@ peopleButton.addEventListener('click', (event) => {
    
 });
 
+
+//Get People Fron Movie Data
 function getPeople(peopleData,moviePeople) {
     let people = [];
    console.log(peopleData);
@@ -144,6 +140,8 @@ function getPeople(peopleData,moviePeople) {
    return people;
 
 }
+
+// SetTimeOut for Requests
 function request(){
     fetch(`${BaseUrl}people`);
 }

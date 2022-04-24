@@ -1,48 +1,44 @@
+const API = 'https://ghibliapi.herokuapp.com';
 
-const API = 'https://ghibliapi.herokuapp.com/films';
-
-
+//global html elements
+const movieList = document.getElementById('movieList');
+const movieDetails = document.getElementById('display-info');
+const reviewForm = document.getElementById('reviewForm');
 const reviewList = document.querySelector('#reviews ul');
-const resetButton = document.querySelector('#reset-reviews');
-const peopleButton = document.querySelector('#show-people');
-const peopleList = document.querySelector('#peopleList');
-const movieList = document.querySelector('#movieList');
-const movieDetails = document.querySelector('#display-info');
-const reviewForm = document.querySelector('#reviewForm');
+const resetButton = document.getElementById('reset-reviews');
+const peopleButton = document.getElementById('show-people');
+const peopleList = document.getElementById('peopleList');
 
-
-//interactive listeners of page
+//event listeners
+movieList.addEventListener('change', (e) => changeMovie(e));
+reviewForm.addEventListener('submit', (e) => submitReview(e));
 resetButton.addEventListener('click', () => resetReviews());
 peopleButton.addEventListener('click', (e) => showPeople(e));
-movieList.addEventListener('change', (e) => toggleMovie(e));
-reviewForm.addEventListener('submit', (e) => submitReview(e));
+
+let fetchRes;
+//set error to fire in 2 sec w/ setTimeOut Meth on err
+setTimeout(() => {
+    fetch(`${API}/films`)
+            .then(res => res.json())
+            .then(res => popList(res))
+            .catch(err => alert(err));
+}, 2000)
 
 
-
-
-
-let ApiResponse;
-    fetch(`${API}`)
-            .then(Response => Response.json())
-            .then(Response => popList(Response))
-            .catch(error => alert(error));
-
-
-
-const popList = (response) => {
-    for (let movie of response) {
-        const Movies = document.createElement('option')
-        Movies.setAttribute('value', movie.id);
-        Movies.textContent = movie.title;
-        movieList.append(Movies);
+const popList = (res) => {
+    for (let movie of res) {
+        const moviesAdd = document.createElement('option')
+        moviesAdd.setAttribute('value', movie.id);
+        moviesAdd.textContent = movie.title;
+        movieList.append(moviesAdd);
     }
 }
 
-const toggleMovie = (e) => {
+const changeMovie = (e) => {
     e.preventDefault();
     movieDetails.innerHTML = '';
 
-    fetch(`${API}${e.target.value}`)
+    fetch(`${API}/films/${e.target.value}`)
         .then(res => res.json())
         .then(res => {
             const header = document.createElement('h3');
@@ -56,7 +52,7 @@ const toggleMovie = (e) => {
             
             movieDetails.append(header, year, description);
 
-            ApiResponse = res;
+            fetchRes = res;
         })
         .catch(err => alert(err));
 
@@ -75,13 +71,45 @@ const submitReview = (e) => {
     title = title.textContent;
     e.target.review.value = '';
 
+    const reviewLi = document.createElement('li');
+
     const strong = document.createElement('strong');
     strong.textContent = `${title}: `;
-
-    const reviewLi = document.createElement('li');
     reviewLi.append(strong);
     reviewLi.append(review);
     reviewList.append(reviewLi);
 }
 
+// set a error response to fire in 2 sec
+const showPeople = (e) => {
+    e.preventDefault();
+
+    setTimeout(() => {
+    fetch(`${API}/people`);
+    }, 2000)
+
+    let title = document.querySelector('#display-info h3');
+    if (!title) {
+        alert('Please select a movie first');
+        return;
+    }
+    title = title.textContent;
+    peopleList.innerHTML = '';
+
+    fetch(`${API}/people`)
+    .then(result => result.json())
+    .then(result => {
+        for (let person of result) {
+            for (let film of person.films) {
+                let cFilm = film.split('/')
+                if (cFilm[cFilm.length - 1] === fetchRes.id) {
+                    let newLi = document.createElement('li');
+                    newLi.textContent = person.name;
+                    peopleList.append(newLi);
+                }
+            }
+        }
+    })
+    .catch(err => alert(err));
+}
 

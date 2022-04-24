@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src = 'index.js'></script>
+</head>
+
+<body>
+  <!-- `body`
+  The page's background should be the color `lavender`.
+  All non-input text should be of the font `monospace`.  -->
+
+  <header>
+    <!-- `header`
+  
+    `img`: An image of the studio's logo should be in the header and should be the same height as the header. The image can be found in the `images/` folder
+    `h1`: `Ghibli Review App`
+    `header`: takes up about 75% of the page's width
+     The `header`'s background should be `skyblue` -->
+    <img src="./images/ghibli-logo.png" alt="Ghibli logo">
+    <h1>Ghibli Review App</h1>
+  </header>
+
+  <main>
+    <!-- `main` -->
+
+    <!-- `section`
+  `h2`: `Select a movie`
+  `select` `id` `titles`: starts with one `option` (blank, no value), remaining `option`s will be populated with the movie titles from the API
+  `section`
+  `h2`: `Add a review`
+  `form`
+  `label`, `for` = `review`: `Your review `
+  `input`, `id` = `review`: type text
+  `input`: type submit
+  `section` -->
+    <section class = 'section1'>
+      <h2>Select a movie</h2>
+      <select id='titles'>
+        <option></option>
+      </select>
+    </section>
+
+    <section>
+      <h2>Add a review</h2>
+      <form>
+        <label for='review'>Your review</label>
+        <input id='review' type='text'>
+        <input class= 'submit' type='submit'>
+      </form>
+    </section>
+
+    <!-- `h2`: `Movie details`
+  `div`, `id` = `display-info`: starts empty, will be populated with `h3` and two `p` elements, when a movie is selected -->
+  <section>
+    <h2>Movie details</h2>
+    <div id='display-info'></div>
+  </section>
+    <!--
+  `section`
+  `h2`: `People`
+  `ol`: starts empty, will be populated with
+  `li` as people `names` are added
+  `button`, `id` = `show-people`, text `Show People`
+  `section`, `id` = `reviews`
+  `h2`: `Reviews`
+  `ul`: starts empty, will be populated with `li` as reviews are added
+  `button`, `id` = `reset-reviews`, text `Reset Reviews`
+-->
+    <section>
+      <h2>People</h2>
+      <ol></ol>
+      <button id='show-people'>Show People</button>
+    </section>
+
+    <section id='reviews'>
+      <h2>Reviews</h2>
+      <ul></ul>
+      <button id='reset-reviews'>Reset Reviews</button>
+    </section>
+  </main>
+
+
+
+</body>
+
+</html>

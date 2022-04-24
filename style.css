@@ -1,0 +1,16 @@
+body{
+  background-color: rgb(230, 230, 250);
+  font-family: monospace;
+}
+/* `header`: takes up about 75% of the page's width
+    The `header`'s background should be `skyblue` */
+header{
+  width: 75%;
+  background-color: skyblue;
+}
+
+@media screen and (max-width: 499px) {
+  #reviews{
+    display: none
+  }
+}

@@ -12,12 +12,22 @@ header {
   background-color: skyblue;
 }
 
-h1 {
-  justify-content: right;
+img {
+  height: inherit;
 }
 
-img {
-  display: inline-block;
-  height: inherit;
-  text-align: left;
+@media (min-width: 500px) {
+  #reviews {
+    display: block;
+  }
+}
+
+@media (max-width: 499px) {
+  #reviews {
+    display: none;
+  }
+}
+
+#titles {
+  width: 28%;
 }

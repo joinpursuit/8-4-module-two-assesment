@@ -16,15 +16,19 @@
     <main>
         <section>
             <h2>Select a movie</h2>
+            <select id="titles">
+                <option value=""></option>
+            </select>
         </section>
         <section>
-            <h2>Add a Review</h2>
+            <h2>Add a review</h2>
             <form>
-                <p><label for="reviews">
+                <label for="review">
                     Your review:
-                </label></p>
-                <input />
-                <input type="submit" value="Submit" />
+                </label>
+                <br>
+                <input id="review" name="review" type="text" />
+                <input id="submit-review" type="submit" value="Submit" />
             </form>
         </section>
         <section>

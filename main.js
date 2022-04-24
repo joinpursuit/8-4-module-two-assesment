@@ -13,7 +13,6 @@ const base_url = "https://ghibliapi.herokuapp.com";
      .catch((err) => {
          console.log(err);
      })
-
  }
 
      const titles = document.querySelector("#titles");
@@ -47,7 +46,6 @@ const base_url = "https://ghibliapi.herokuapp.com";
          const description = document.createElement('p');
          description.textContent = data[i].description;
          displayInfo.append(description);
-
      }
   }
  }
@@ -78,8 +76,6 @@ const base_url = "https://ghibliapi.herokuapp.com";
          userReview.value = ""
          //console.log(hello)
      }
-
-
  }
 
  const resetReviews = document.querySelector("#reset-reviews");
@@ -87,7 +83,6 @@ const base_url = "https://ghibliapi.herokuapp.com";
  resetReviews.addEventListener("click", (event) => {
      ul.innerHTML = "";
  })
-
 
  const showPpl = document.querySelector("#show-people");
 

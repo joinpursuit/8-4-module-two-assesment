@@ -1,0 +1,30 @@
+
+
+body{
+    background-color:lavender;
+    font-family: monospace;
+    margin:120px;
+    margin-top: 0;
+}
+header{
+    border:3px solid skyblue;
+    background-color: skyblue;
+    max-width: 75%;
+}
+img{
+    width:250px;
+}
+
+h1{
+    float:right;
+    font-style: monospace;
+}
+
+.hidden{
+    display:none;
+}
+@media screen and (max-width: 500px) {
+    #reviews {
+        display: none;
+    }
+}

@@ -17,7 +17,6 @@ fetch(`${BASE_URL}${value}`)
    getPeople();
   });
 
-
 function dropDown(films) {
     let dropDownO = document.querySelector("#titles");
     let allFilms = [];
@@ -89,26 +88,23 @@ function dropDown(films) {
   }
 
   function getPeople(){
-    value = "people";
-    fetch(`${BASE_URL}${value}`)
-  .then((response) => response.json())
-  .then((response) => {
-   people = response;
+    const peopleSection = document.querySelector("#peopleSec");
+    const peopleL = document.querySelector("#people")
+  peopleSection.addEventListener("click", (e) => {
+    e.preventDefault();
+    fetch(`${BASE_URL}people`)
+      .then((response) => response.json())
+      .then((response) => {
+        let people = response.filter((person) => {
+          return (person.id = titles.value);
+        });
+        people.forEach((person) => {
+          let name = document.createElement("li");
+          name.innerHTML = person.name
+          peopleL.append(name)
+        })
+      });
   });
-    const showPeople = document.querySelector("#show-people");
-    showPeople.addEventListener("click", event =>{
-      console.log(movieId);
-      people.forEach(person =>{
-        console.log(person);
-      })
-     
-      
-      
-    })
-  }
- 
-    
-
-
+}
 
 

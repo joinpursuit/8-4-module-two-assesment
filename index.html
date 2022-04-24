@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="./images/ghibli-logo.png" alt="Ghibli logo" />
+      <h1>Ghibli Review App</h1>
+    </header>
+
+    <main>
+      <section id="sec1">
+        <h2>Select a movie</h2>
+        <select name="titles" id="titles">
+            <option></option>
+        </select>
+      </section>
+
+      <section id="sec2">
+          <h2>Add a review</h2>
+          <form>
+              <label for="review">Your review:</label>
+              <br>
+              <input type="text" id="review" name="review"/>
+              <input type="submit" value="Submit"/>
+          </form>
+      </section>
+
+      <section id="sec3">
+          <h2>Movie details</h2>
+          <div id="display-info">
+              <h3 id="movie-name"></h3>
+              <p id="year"></p>
+              <p id="description"></p>
+          </div>
+      </section>
+
+      <section id="sec4">
+          <h2>People</h2>
+          <button id="show-people">Show People</button>
+          <ol id="people-list">
+          </ol>
+      </section>
+
+      <section id="reviews">
+        <h2>Reviews</h2>
+        <ul id="reviews-list"></ul>
+        <button id="reset-reviews">Reset Reviews</button>
+      </section>
+    </main>
+  </body>
+</html>

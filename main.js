@@ -85,6 +85,7 @@ userReviewForm.addEventListener("submit", (event) => {
     event.preventDefault();
     //console.log(userReview);
     submitReview(userReview);
+    userReview.textContent = userReview;
     userReviewForm.reset();
 })
 
@@ -93,13 +94,19 @@ userReviewForm.addEventListener("submit", (event) => {
 function submitReview (userReview){//get the user input. 
     const title = document.querySelector('h3');
 
- if (!titles.value) {
+ if (!title) {
         alert('Please select a movie first');
+        return;
     }
+
+
     const li = document.createElement("li");
     li.innerHTML = `<strong>${title.textContent}:</strong> ${userReview.value}`
     ul.append(li);
+
 }
+
+
 
 const resetReview = document.querySelector("#reset-reviews");
 
@@ -124,14 +131,25 @@ fetch(`${base_url}/people`)
         console.log(err);
     })
 
+
+    ol.innerHTML = " ";
 }));
 
 
+const ol = document.querySelector("ol");
+
 function populatePeople(peopledata) {
     console.log(titles.value);//
+    //peopledata.length;
     for (let i = 0; i < peopledata.length; i++){
-        if (peopledata[i].films[0].value === `https://ghbliapi.gerokuapp.com/films/${titles.value}`) {
-            console.log("apple");
+        //console.log(peopledata[i].films[0].split("/")[4])
+        
+        if (peopledata[i].films[0].split("/")[4] === titles.value) {
+            //console.log(peopledata[i].name);
+
+            const li = document.createElement("li");
+            li.innerHTML = `${peopledata[i].name}`
+            ol.append(li);
         } 
 
     }

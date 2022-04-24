@@ -1,0 +1,28 @@
+.hidden{
+    display: none;
+}
+
+body{
+    background-color: lavender;
+    font-family: monospace;   
+}
+
+header{
+    background-color: skyblue;
+}
+
+h1{
+    float: right;
+}
+
+@media (min-width: 500px){
+    #reviews{
+        display:block;
+    }
+}
+
+@media(max-width: 449px){
+    #reviews{
+        display:none;
+    }
+}

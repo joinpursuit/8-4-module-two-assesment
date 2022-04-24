@@ -4,7 +4,8 @@ let data;
 let peopledata;
 
 //get the data. 
-fetch(`${base_url}/films`)
+function getdata () {
+    fetch(`${base_url}/films`)
     .then((response) => response.json())
     .then((json) => {   
     data = json;
@@ -15,6 +16,8 @@ fetch(`${base_url}/films`)
     .catch((err) => {
         console.log(err);
     })
+
+}
 
 //global 
     const titles = document.querySelector("#titles");
@@ -84,9 +87,10 @@ const userReview  = document.querySelector("#review");
 userReviewForm.addEventListener("submit", (event) => {
     event.preventDefault();
     //console.log(userReview);
-    submitReview(userReview);
     userReview.textContent = userReview;
-    userReviewForm.reset();
+    submitReview(userReview);
+   
+    //userReviewForm.reset();
 })
 
 
@@ -96,13 +100,16 @@ function submitReview (userReview){//get the user input.
 
  if (!title) {
         alert('Please select a movie first');
+        userReview.textContent = userReview.value;
         return;
+    } else {
+
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${title.textContent}:</strong> ${userReview.value}`
+        ul.append(li);
+        userReview.value = ""
     }
 
-
-    const li = document.createElement("li");
-    li.innerHTML = `<strong>${title.textContent}:</strong> ${userReview.value}`
-    ul.append(li);
 
 }
 
@@ -139,7 +146,7 @@ fetch(`${base_url}/people`)
 const ol = document.querySelector("ol");
 
 function populatePeople(peopledata) {
-    console.log(titles.value);//
+   // console.log(titles.value);//
     //peopledata.length;
     for (let i = 0; i < peopledata.length; i++){
         //console.log(peopledata[i].films[0].split("/")[4])
@@ -155,4 +162,4 @@ function populatePeople(peopledata) {
     }
 }
 
-
+setTimeout(getdata,1000);

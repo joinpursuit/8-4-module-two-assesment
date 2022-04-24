@@ -15,7 +15,7 @@ function getFilms() {
             console.log(error)
         })
 }
-getFilms();
+getFilms(); 
 
 // ----------------------------- Select a Movie ----------------------------- //
 function selectFilms(allFilms) {
@@ -36,7 +36,7 @@ function selectFilms(allFilms) {
         document.getElementById('show-people').disabled = false;
     });
 }
-
+// ----------------------------- Error Message ----------------------------- //
 function movieError(){
     window.alert('Please select a movie first');
 }
@@ -87,9 +87,6 @@ function addReviews() {
     } 
 }
 
-// ----------------------------- Error Message ----------------------------- //
-
-
 // ----------------------------- Deletes Reviews ----------------------------- //
 function deleteReviews() {
     const listedReviews = document.querySelector('#reviews ul')
@@ -127,6 +124,6 @@ function getPeopleInfo(peopleURL, url) {
                 }
             }
         })
-        
-
 }
+
+// All tests pass after a couple refreshes. Not sure why.

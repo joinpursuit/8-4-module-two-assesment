@@ -81,7 +81,6 @@ function addReviews() {
     if (Object.keys(allReviews).length) {
         sectionListItems = document.querySelectorAll('li')
         sectionListItems.forEach(x => x.remove());
-        
         for (const [key, value] of Object.entries(allReviews)) {
             sectionReviews.innerHTML += `<li><strong><b>${key}</strong></b>: ${value}</li>`
         }

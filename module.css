@@ -1,0 +1,26 @@
+body{
+    background-color: lavender;
+    font-family: monospace;
+}
+
+header{
+    background-color: skyblue;
+    width: 75%;
+
+}
+
+h1{
+    text-align: left;
+    font-size: 40px;
+}
+
+img{
+    height: 200px;
+    
+}
+@media (max-width:500px)  {
+    #reviews {
+        display:none;
+    }
+    
+}

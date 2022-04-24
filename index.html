@@ -1,0 +1,55 @@
+<!--mybody should be lavender -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>module2 test</title>
+    <link rel="stylesheet" href="modulestyle.css" />
+    <script defer src="module.js"></script>
+</head>
+<body>
+   <div class="header">
+       <header>
+        <h1>Ghibli Review App</h1>
+           <img src="./images/ghibli-logo.png" alt="Ghibli logo">
+       </header>
+   </div>
+   
+   <main>
+       <section>
+           <h2>Select movie</h2>
+           <select name="movie-titles" id="titles">
+           <option></option>
+        </select>
+    </section>
+             <section>
+               <h2>Add a review</h2>
+   <!--review-->  <form action="">
+       <label for="review">Your review</label>
+       <input id="review" name="review" type="text"></input>
+       <input type="submit" value="Submit Review"></input>
+    </form>
+</section>
+<section>
+    <h2>Movie details</h2>
+    <div id="display-info">
+        <h3 id="display1"></h3>
+        <p id="display2"></p>
+        <p id="display3"></p>
+    </div>
+</section>
+<section>
+    <h1>People</h1>
+    <ol></ol>
+    <button id="show-people">Show People</button>
+</section>
+<section id="reviews">
+<h2>Reviews</h2>
+<ul></ul>
+<button id="reset-reviews">Reset Reviews</button>
+</section>
+</main>
+</body>
+</html>

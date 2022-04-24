@@ -1,0 +1,36 @@
+body {
+    background-color: lavender;
+    font-family: monospace;
+}
+
+header {
+    display: f;
+    justify-content: space-between;
+    width: 75%;
+    height: 15%;
+    background-color: skyblue;
+    margin: auto;
+}
+header h1 {
+    margin-right: 5px;
+}
+main {
+    margin-left: 13%;
+    margin-right: 13%;
+}
+/* make the image size */
+#headerIMG {
+    width: 50%;
+}
+
+@media only screen and (min-width: 500px) {
+    #reviews {
+        display: block;
+    }
+}
+
+@media (max-width: 499px) {
+    #reviews {
+        display: none;
+    }
+}

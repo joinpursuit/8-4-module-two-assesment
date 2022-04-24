@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <header>
+        <img src="./images/ghibli-logo.png" alt="Ghibli logo">
+        <h1>Ghibli Review App</h1>
+    </header>
+
+    <main>
+        <section id="display-info">
+            <h2>Select a movie</h2>
+            <select id="titles">
+                <option>             </option>
+            </select>
+        </section>
+        <section>
+           <h2>Add a review</h2>
+           <br>
+           <form id="reviewForm">
+               <label for="review">Your review:</label>
+               <br>
+               <input id="review" type="text" placeholder="type text">
+               <input type="submit" id="reviewB">
+           </form>
+        </section>
+        <section>
+            <h2>Movie details</h2>
+            <div id="display-info">
+            </div>
+        </section>
+        <section id="peopleSec">
+        <h2>People</h2>
+        <ol id="people">
+        </ol>
+        <button id="show-people">Show People</button>
+        </section>
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <ul></ul>
+            <button id="reset-reviews">Reset Reviews</button>
+        </section>
+    </main>
+</body>
+</html>

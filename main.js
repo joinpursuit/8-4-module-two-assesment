@@ -9,29 +9,28 @@ let showPeople = document.querySelector("#show-people")
 const ol = document.querySelector("ol")
 
 function getMovies(){
-    fetch("https://ghibliapi.herokuapp.com/films")
+    fetch("https://ghibliapi.herokuapp.com/films/")
     .then((response) => response.json())
     .then((json) => {
         data = json
-        console.log(data)
         addOptions(data)
     })
 }
-getMovies()
 
 function addOptions(data){
     let titlesArr = []
-    for(let movie of data){
-        titlesArr.push(movie.title)
+    data.forEach((el) => {
+        if(!titlesArr.includes(el)){
+            titlesArr.push(el.title)
+        }
+    })
     for(let title of titlesArr){
         let option = document.createElement("option")
-        if(titlesArr.indexOf(title) === -1){
-            option.value = title
-            option.text = title
-            dropDown.append(option)
-        }
+        option.value = title
+        option.text = title
+        dropDown.append(option)
     }
-}
+    
 }
 
 dropDown.addEventListener("change", (event) =>{
@@ -56,7 +55,7 @@ function getDescription(data){
             divp2.textContent = data[i].description
             divDescription.append(divh3, divp1, divp2)
         }
-
+        
     }
 }
 form.addEventListener("submit", (event) => {
@@ -64,32 +63,36 @@ form.addEventListener("submit", (event) => {
     const inputText = event.target.review.value
     const listItem = document.createElement("li")
     for(let i = 1; i < dropDown.options.length; i++){
-        if(dropDown.options[i].selected === true){
-            listItem.innerHTML= `<strong>${dropDown.options[dropDown.selectedIndex].text}</strong>: ${inputText}`
+        if(dropDown.options[i].selected){
+            listItem.innerHTML= `<strong>${dropDown.options[dropDown.selectedIndex].text}.</strong> ${inputText}`
             ul.append(listItem)
             form.reset()
         }
-    }
-})
-
-resetReviews.addEventListener("click", (event) => {
-    ul.innerHTML= ""
-})
-
-// showPeople.addEventListener("click", (event) => {
-//     fetch("https://ghibliapi.herokuapp.com/people")
-//     .then((response) => response.json())
-//     .then((json) => {
-//         dataPeople = json
-//         for(singleData of data){
-//             for(dataPerson of dataPeople){
-//                 if(singleData.people.includes(dataPerson.url) && dataPerson.films.includes(singleData.id)){
-//                     let peopleListItem = document.createElement("li")
-//                     peopleListItem.textContent = `${dataPerson.name}`
-//                     ol.append(peopleListItem)
-
-//                 }
-//             }
-//         }
-//     })
-// })
+        if(dropDown.options[dropDown.selectedIndex].value === ""){
+            window.alert("Please select a movie first")
+        }
+        }
+    })
+    
+    resetReviews.addEventListener("click", (event) => {
+        ul.innerHTML= ""
+    })
+    
+    showPeople.addEventListener("click", (event) => {
+        fetch("https://ghibliapi.herokuapp.com/people")
+        .then((response) => response.json())
+        .then((json) => {
+            dataPeople = json
+            for(singleData of data){
+                for(dataPerson of dataPeople){
+                    if(singleData.people.includes(dataPerson.url)){
+                        let peopleListItem = document.createElement("li")
+                        peopleListItem.textContent = `${dataPerson.name}`
+                        ol.append(peopleListItem)
+                        
+                    }
+                }
+            }
+        })
+    })
+    setTimeout(getMovies(), 2000)

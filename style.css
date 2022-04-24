@@ -1,0 +1,27 @@
+header {
+    background-color: skyblue;
+    text-align: center;
+}
+header h1{ 
+    text-align: end;
+}
+header img {
+    background-position: center;
+    position: relative;
+    background-size: cover;
+    width: 75%;
+}
+
+body {
+    background-color: lavender;
+    font-family: monospace;
+    grid-template-columns: 1fr;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+@media screen and (max-width: 500px) {
+    #reviews{
+        display: none;
+    }
+}

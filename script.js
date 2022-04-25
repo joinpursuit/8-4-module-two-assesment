@@ -62,14 +62,14 @@ reviewDetails.addEventListener('submit', (event) => {
 
         const review = event.target.review.value;
 
-
         const reviewSectionUl = document.querySelector('#reviews ul');
         const reviewSectionLi = document.createElement('li');
         const movieName = document.createElement('strong');
+
         if (result) {
             movieName.textContent = `${result.title}: `;
-
         }
+        
         reviewSectionLi.textContent = `${review}`;
         reviewSectionLi.prepend(movieName);
         reviewSectionUl.append(reviewSectionLi);

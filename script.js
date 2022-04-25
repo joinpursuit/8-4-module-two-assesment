@@ -18,7 +18,7 @@ getApiData();
 
 // Get Movie Titles to Populate Select 
 function getMovieTitles(filmsData) {
-setTimeout(movieRequest,1000);
+    setTimeout(movieRequest, 1000);
     const options = document.querySelector("select");
     filmsData.forEach((movie) => {
         const option = document.createElement("option");
@@ -27,6 +27,7 @@ setTimeout(movieRequest,1000);
         options.append(option);
     });
 }
+
 
 let moviePeople;
 let result;
@@ -38,7 +39,7 @@ movieDetails.addEventListener('change', () => {
     const displayMovieYear = document.createElement('p');
     const displayMovieDseciption = document.createElement('p');
     result = getMovieDetails(movieID);
-    if(result){
+    if (result) {
         moviePeople = result.people;
         displayMovieTitle.textContent = result.title;
         displayMovieYear.textContent = result.release_date;
@@ -50,36 +51,31 @@ movieDetails.addEventListener('change', () => {
 });
 
 
-
 //Review Details Form Add Event Listener
 const reviewDetails = document.querySelector("form");
 reviewDetails.addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log(document.getElementById("review").value);
 
     if ((typeof (result)) === 'undefined') {
         alert('Please select a movie first');
-        console.log(document.getElementById("review").value);
+    } else {
 
-    }else{
+        const review = event.target.review.value;
 
-    
-    const review = event.target.review.value;
 
-    const reviewSectionUl = document.querySelector('#reviews ul');
-    const reviewSectionLi = document.createElement('li');
-    const movieName = document.createElement('strong');
-    if(result){
-        movieName.textContent = `${result.title}: `;
+        const reviewSectionUl = document.querySelector('#reviews ul');
+        const reviewSectionLi = document.createElement('li');
+        const movieName = document.createElement('strong');
+        if (result) {
+            movieName.textContent = `${result.title}: `;
 
+        }
+        reviewSectionLi.textContent = `${review}`;
+        reviewSectionLi.prepend(movieName);
+        reviewSectionUl.append(reviewSectionLi);
+        reviewDetails.reset();
     }
-    reviewSectionLi.textContent = `${review}`;
-    reviewSectionLi.prepend(movieName);
-    reviewSectionUl.append(reviewSectionLi);
-    reviewDetails.reset();
-}
 });
-
 
 
 //Review Button Add Event Listener
@@ -96,7 +92,6 @@ function getMovieDetails(movieID) {
     for (let i = 0; i < filmsData.length; i++) {
         if (filmsData[i].id === movieID) {
             return filmsData[i];
-
         }
     }
 }
@@ -107,44 +102,39 @@ let people;
 const peopleButton = document.querySelector("#show-people");
 peopleButton.addEventListener('click', (event) => {
     event.preventDefault();
-    setTimeout(request,1000);
-    people = getPeople(peopleData,moviePeople);
-    console.log(people)
+    setTimeout(request, 1000);
+    people = getPeople(peopleData, moviePeople);
     const peopleSectionOl = document.querySelector("section ol");
-    if(people){
+    if (people) {
         people.forEach((person) => {
             const peopleSectionLi = document.createElement("li");
             peopleSectionLi.textContent = person;
             peopleSectionOl.append(peopleSectionLi);
-          });
+        });
     }
-   
+
 });
 
 
 //Get People Fron Movie Data
-function getPeople(peopleData,moviePeople) {
-    let people = [];
-   console.log(peopleData);
-   console.log(moviePeople);
+function getPeople(peopleData, moviePeople) {
+    let peopleArray = [];
 
-    for (let i = 0; i < peopleData.length; i++) {
-       for(let j=0;j < moviePeople.length;j++){
-        if (peopleData[i].url === moviePeople[j]) {
-            people.push(peopleData[i].name);
-        }
-       }
-        
-    }
-
-   return people;
-
+    peopleData.forEach(personData =>{
+        moviePeople.forEach(moviePerson=> {
+            if (personData.url === moviePerson) {
+                 peopleArray.push(personData.name);
+            }
+        });
+    });
+    return peopleArray;
 }
+
 
 // SetTimeOut for Requests
-function request(){
+function request() {
     fetch(`${BaseUrl}people`);
 }
-function movieRequest(){
+function movieRequest() {
     fetch(`${BaseUrl}films`);
 }

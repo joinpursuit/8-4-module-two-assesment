@@ -16,9 +16,9 @@ header {
     align-content: space-around;
 }
 img {
-    text-align: left;
-    height: 300px;
-    order: 2;
+   text-align: left;
+    height: 200px;
+  
 }
 .logo {
    
@@ -31,16 +31,20 @@ header h1 {
     text-align: right;
 
 }
+#movie-details {
+    font-weight: 600;
+}
 
 
- @media (min-width: 400px) {
-     #reviews{
-         display: none;
-     }
- }
+
  @media (max-width: 780px) {
     #reviews{
         display: block;
     }
-};
+}
+@media (max-width: 400px) {
+    #reviews{
+        display: none;
+    }
+}
    

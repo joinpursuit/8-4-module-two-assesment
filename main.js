@@ -5,7 +5,7 @@ let movies;
 function getMovies() {
   fetch(apiMovies)
     .then((res) => res.json())
-    .then((data) => {
+    .then((data) => { 
       movies = data;
       // console.log(movies);
       getTitles(movies);
@@ -104,3 +104,112 @@ showPeople.addEventListener("click", () => {
         }
     });
 });
+
+///////Tim's Code/////
+
+// let appState = {
+//   movies:[],
+//   people:[],
+//   selectedMovie:null,
+//   reviews:[], 
+// };
+
+// const BASE_URL = 'https://ghibliapi.herokuapp.com/';
+
+// document.getElementById('titles').addEventListener('change', (e) => {
+//   //the id's of the movie that is selected
+//   const id = e.target.value;
+//   appState.selectedMovie = updateSelected(id);
+// });
+
+// document.querySelector('form').addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   if(!appState.selectedMovie){
+//     alert('Please select a movie first');
+//   } else{
+//     const title = appState.selectedMovie.title;
+//     const text = e.target.review.value;
+//     const review = {
+//       title,
+//       text
+//     }
+//     appState.reviews.push(review)
+  
+//     const template = 
+//     `<li><strong>${title}:</strong> ${text}</li>`;
+  
+//     document.querySelector('ul').innerHTML += template;
+//     e.target.reset();
+//   }
+// });
+
+// document.querySelector('#reset-reviews').addEventListener('click', (e) => {
+//   document.querySelector('ul').innerHTML = '';
+//   appState.reviews = [];
+// });
+
+// document.querySelector('#show-people').addEventListener('click', (e) => {
+//   getPeople();
+// });
+
+
+// const getMovies = () => {
+//   fetch(BASE_URL + 'films')
+//   .then(res => res.json())
+//   .then(data => {
+//     appState.movies = data;
+//     populateSelect(appState.movies);
+//   })
+// };
+
+// const getPeople = () => {
+//   fetch(BASE_URL + 'people')
+//   .then(res => res.json())
+//   .then(people => { 
+//     const id = appState.selectedMovie.id;
+//     const url = BASE_URL+'films/'+id;
+//     appState.people = people.filter(person => {
+//       return person.films.includes(url)
+//     })
+//     populatePeople(appState.people);
+//   })
+// };
+
+// const populateSelect = (movies) => {
+//   movies.forEach(movie => {
+//     const option = document.createElement('option');
+//     option.textContent = movie.title;
+//     option.setAttribute('value', movie.id);
+//     document.getElementById('titles').appendChild(option);
+//   })
+// };
+
+// const updateSelected = (id) => {
+//   return appState.movies.find(movie => {
+//     return movie.id === id
+//   });
+// };
+
+// const populatePeople = () => {
+//   const peopleList = document.querySelector('ol');
+//   peopleList.innerHTML = '';
+//   appState.people.forEach(person => {
+//     const li = document.createElement('li');
+//     li.textContent = person.name;
+//     peopleList.appendChild(li);
+//   })
+// }
+
+// const setMovieDescription = () => {
+//   const details = document.querySelector('#display-info');
+//   if(!appState.selectedMovie){
+//     details.innerHTML = '';
+//   } else{
+//     const { title, release_date, description } = appState.selectedMovie;
+//     const template =
+//       `<h3>${title}</h3><p>${release_date}</p><p>${description}</p>`; 
+//       details.innerHTML = template;
+//   }
+// };
+
+// setTimeout(getMovies(), 1000);

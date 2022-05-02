@@ -4,24 +4,20 @@ body{
 
 }
 
-header{
+/* header{
     display: flex;
     justify-content: space-between;
     width: 75%;
     height: 15%;
     background-color: skyblue;
     margin: auto;
-}
+} */
 
 #image{
-    width: 30%;
-}
+    width: 75%;
+    height: 350px;
+    background-color: skyblue;
 
-
-@media (min-width: 500px){
-    #reviews {
-        display: block;
-    }
 }
 
 @media (max-width: 499px){

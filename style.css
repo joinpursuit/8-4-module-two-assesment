@@ -1,0 +1,35 @@
+body{
+    background-color: lavender;
+    font-family: monospace;
+}
+
+header{
+    background-color: skyblue;
+    width: 75%; 
+}
+
+h1{
+    text-align: right;
+}
+
+img{
+    /* tim's code
+    height: 350px;
+    max-width: 75%; */ 
+    height: 200px;
+}
+
+/* you can use command f to search for things in your code */
+/* by default the display will be block */
+@media(min-width:500px){
+    #reviews{
+        display: block;
+    }
+}
+
+/* tim's code -> 499px; only needed the one below not the one above */
+@media(max-width:500px){
+    #reviews{
+        display: none;
+    }
+}
